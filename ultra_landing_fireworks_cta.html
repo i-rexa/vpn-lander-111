@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shield Your Digital Life Now</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #fffde7, #ffffff);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #263238;
+        }
+        .container {
+            max-width: 660px;
+            padding: 2.5em;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 2.4em;
+            color: #c62828;
+            margin-bottom: 0.4em;
+        }
+        h2 {
+            font-size: 1.3em;
+            color: #ef6c00;
+            margin-bottom: 1.5em;
+        }
+        p {
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 1.2em;
+        }
+        .cta {
+            background: #d50000;
+            color: #fff;
+            border: none;
+            padding: 1.2em 2.4em;
+            font-size: 1.2em;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 1.5em;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
+        }
+        .cta:hover {
+            background: #b71c1c;
+        }
+        .note {
+            font-size: 0.9em;
+            color: #6d6d6d;
+            margin-top: 1.2em;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fireworks"></canvas>
+    <div class="container">
+        <h1>Your Privacy Deserves Celebration</h1>
+        <h2>Activate Your Free VPN Now — Before Midnight</h2>
+        <p>Each second you delay, your digital shadow grows. But now, you can erase your trail, instantly and ethically.</p>
+        <p>Take back your digital space. You’re just one click away from a safer, calmer browsing experience — for free.</p>
+
+        <a class="cta" href="https://lnkmeup.com/view.php?id=5539743&pub=3254437" target="_blank" onclick="startFireworks()">Activate Protection</a>
+
+        <p class="note">🎆 Bonus: Get a spark of freedom with every click.</p>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function startFireworks() {
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    radius: Math.random() * 2 + 1,
+                    color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+                    dx: (Math.random() - 0.5) * 8,
+                    dy: (Math.random() - 0.5) * 8,
+                    alpha: 1
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                ctx.globalAlpha = p.alpha;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+                p.x += p.dx;
+                p.y += p.dy;
+                p.alpha -= 0.01;
+                if (p.alpha <= 0) particles.splice(index, 1);
+            });
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+    </script>
+</body>
+</html>
